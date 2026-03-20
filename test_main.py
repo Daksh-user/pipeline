@@ -1,5 +1,5 @@
-from main import add
+from main import list
+a = ('apple', 'banana', 'cherry')
 def test_add():
-    assert add(2, 3) == 5
-    assert add(-1, 1) == 0
-    assert add(0, 0) == 0
+    assert list(a[0]) == 'banana'
+    
