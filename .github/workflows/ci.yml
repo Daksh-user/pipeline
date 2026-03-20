@@ -1,0 +1,46 @@
+name: CI Pipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1️⃣ Checkout repo
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2️⃣ Setup Python
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    # 3️⃣ Install Python dependencies
+    - name: Install Python dependencies
+      run: |
+        pip install -r requirements.txt
+
+    # 4️⃣ Run Python tests
+    - name: Run Python tests
+      run: |
+        pytest
+
+    # 5️⃣ Setup Node.js for HTMLHint
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    # 6️⃣ Install HTMLHint globally
+    - name: Install HTMLHint
+      run: |
+        npm install -g htmlhint
+
+    # 7️⃣ Run HTMLHint on your HTML file
+    - name: Validate HTML
+      run: |
+        htmlhint index.html
