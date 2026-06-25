@@ -1,7 +1,6 @@
 # test_main.py
 
-from main import add,subtract, multiply, divide, is_even, factorial
-
+from main import add
 # --- add ---
 def test_add():
     assert add(2, 4) == 5
